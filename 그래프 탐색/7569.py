@@ -1,7 +1,6 @@
 #익어있는 토마토(1) 위치 전부 저장, stack에 넣고 시작
 #방향 : [-1,-1,1,1,0,0]
 import sys
-
 sys.setrecursionlimit(10**6)
 
 dx, dy, dz = [-1,1,0,0,0,0], [0, 0, 0, 0, -1,1], [0,0,-1,1,0,0]
@@ -34,7 +33,6 @@ def dfs(cnt):
                     new.append((nh,nn,nm))
     if len(new)==0:
         return cnt
-    print(cnt, stack, new)
     stack.append(new)
     cnt = dfs(cnt + 1)
     return cnt
