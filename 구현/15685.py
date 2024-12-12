@@ -1,6 +1,8 @@
 # 드래곤 커브
 
 N = int(input())
+dx = [1,0,-1,0]
+dy = [0,-1,0,1]
 
 '''
 90도 회전 함수
@@ -14,24 +16,12 @@ def rotate_direction(direction:list) -> list:
         direction.append((direction[i]+1)%4)
     return direction
 
-def move_forward(x,y,d) -> tuple:
-    if d == 0:
-        nx, ny = x+1, y
-    if d == 1:
-        nx, ny = x, y-1
-    if d == 2:
-        nx, ny = x-1, y
-    if d == 3:
-        nx, ny = x, y+1
-    return (nx,ny)
-
 def find_square(nodes:list) -> int:
     count = 0
     for x, y in nodes:
         if (x+1, y) in nodes and (x, y+1) in nodes and (x+1, y+1) in nodes:
             count += 1
     return count
-
 
 nodes = []
 for _ in range(N):
@@ -41,7 +31,7 @@ for _ in range(N):
         directions = rotate_direction(directions)
     route = [(x,y)]
     for d in directions:
-        x, y = move_forward(x,y,d)
+        x, y = x + dx[d], y + dy[d]
         route.append((x,y))
     nodes = list(set(nodes+route))
 
