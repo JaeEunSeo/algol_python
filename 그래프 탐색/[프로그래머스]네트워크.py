@@ -13,7 +13,7 @@ def solution(n, computers):
                 if j==i:
                     continue
                 if not visited[j] and computers[i][j]:
-                    stack.append(ja)
+                    stack.append(j)
                     visited[j] = True
                     
     for idx in range(n):
